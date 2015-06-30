@@ -42,6 +42,28 @@ class GameViewController : UIViewController {
         }
         
         self.graph.makeNetwork()
+        
+        for v in self.graph.matrix {
+            let tileViewCtrl = v!.elem as! TileViewController
+            if v?.type == .Source {
+                tileViewCtrl.server.hidden = false
+            }
+            if v?.type == .Computer {
+                tileViewCtrl.computer.hidden = false
+            }
+            if v!.connections[VertexConnectionDirecion.Down.indexOf()] {
+                tileViewCtrl.connectionDown.hidden = false
+            }
+            if v!.connections[VertexConnectionDirecion.Up.indexOf()] {
+                tileViewCtrl.connectionUp.hidden = false
+            }
+            if v!.connections[VertexConnectionDirecion.Left.indexOf()] {
+                tileViewCtrl.connectionLeft.hidden = false
+            }
+            if v!.connections[VertexConnectionDirecion.Right.indexOf()] {
+                tileViewCtrl.connectionRight.hidden = false
+            }
+        }
     }
     
     override func prefersStatusBarHidden() -> Bool {

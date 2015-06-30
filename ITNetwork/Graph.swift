@@ -6,6 +6,8 @@
 //  Copyright © 2015 Peter Arato. All rights reserved.
 //
 
+import Foundation
+
 typealias NeighbourPos = (Int, Int, VertexConnectionDirecion)
 
 class Graph {
@@ -55,7 +57,7 @@ class Graph {
         
         var serverConnections = [NeighbourPos]()
         for pos in self.neighbourMap {
-            serverConnections.append(pos)
+            serverConnections.append((randJ + pos.0, randI + pos.1, pos.2))
         }
         let initialConnections = self.createConnections(from: server, to: serverConnections)
         for item in initialConnections {
@@ -64,10 +66,6 @@ class Graph {
 
         while let (j, i, _) = queue.get() {
             guard let v = self.getJI(j: j, i: i) else {
-                continue
-            }
-            
-            if v.color != .White {
                 continue
             }
             
@@ -80,10 +78,11 @@ class Graph {
                 v.type = .Computer
             } else {
                 let randChoice = RandomUtil.randIntRange(0, to: 10)
-                if randChoice < 4 {
+                if randChoice < 3 {
                     v.type = .Computer
                 } else {
                     let connected = self.createConnections(from: v, to: neighbours)
+                    // @todo try shuffling it
                     for connectedPos in connected {
                         queue.add(connectedPos)
                     }
@@ -110,7 +109,7 @@ class Graph {
         var connected = [NeighbourPos]()
         let fixed = RandomUtil.randIntRange(0, to: to.count)
         for var i = 0; i < to.count; i++ {
-            if i == fixed || RandomUtil.randIntRange(0, to: 10) < 6 {
+            if i == fixed || RandomUtil.randIntRange(0, to: 10) < 8 {
                 if makeConnection(from: from, to: to[i]) {
                     connected.append(to[i])
                 }
@@ -129,6 +128,8 @@ class Graph {
         
         from.connections[fromConnectionIDX] = true
         toVertex.connections[toConnectionIDX] = true
+        
+        toVertex.color = .Grey
         
         return true
     }
