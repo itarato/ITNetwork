@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameViewController : UIViewController {
+class GameViewController : UIViewController, TileTapReceiver {
     
     @IBOutlet weak var gridCanvas: UIView!
     
@@ -52,22 +52,27 @@ class GameViewController : UIViewController {
                 tileViewCtrl.computer.hidden = false
             }
             if v!.connections[VertexConnectionDirecion.Down.indexOf()] {
-                tileViewCtrl.connectionDown.hidden = false
+                tileViewCtrl.turnOnConnection(.Down)
             }
             if v!.connections[VertexConnectionDirecion.Up.indexOf()] {
-                tileViewCtrl.connectionUp.hidden = false
+                tileViewCtrl.turnOnConnection(.Up)
             }
             if v!.connections[VertexConnectionDirecion.Left.indexOf()] {
-                tileViewCtrl.connectionLeft.hidden = false
+                tileViewCtrl.turnOnConnection(.Left)
             }
             if v!.connections[VertexConnectionDirecion.Right.indexOf()] {
-                tileViewCtrl.connectionRight.hidden = false
+                tileViewCtrl.turnOnConnection(.Right)
             }
         }
     }
     
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    func tapOccurredFrom(from: AnyObject) {
+        // Review the flow.
+//        self.graph.reviewFlow()
     }
     
 }

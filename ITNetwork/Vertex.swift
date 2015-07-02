@@ -6,6 +6,11 @@
 //  Copyright © 2015 Peter Arato. All rights reserved.
 //
 
+struct Point {
+    var j: Int = 0
+    var i: Int = 0
+}
+
 enum VertexType {
     case Empty
     case Source
@@ -26,26 +31,35 @@ enum VertexConnectionDirecion {
     
     func opposite() -> VertexConnectionDirecion {
         switch self {
-        case Up: return .Down
-        case Right: return .Left
-        case Down: return .Up
-        case Left: return .Right
+        case .Up: return .Down
+        case .Right: return .Left
+        case .Down: return .Up
+        case .Left: return .Right
         }
     }
     
     func indexOf() -> Int {
         switch self {
-        case Up: return 0
-        case Right: return 1
-        case Down: return 2
-        case Left: return 3
+        case .Up: return 0
+        case .Right: return 1
+        case .Down: return 2
+        case .Left: return 3
+        }
+    }
+    
+    func neighbour() -> Point {
+        switch self {
+        case .Up: return Point(j: -1, i: 0)
+        case .Right: return Point(j: 0, i: 1)
+        case .Down: return Point(j: 1, i: 0)
+        case .Left: return Point(j: 0, i: -1)
         }
     }
 }
 
 class Vertex {
 
-    let elem: AnyObject
+    let elem: VertexAware
     
     var type: VertexType = .Empty
     
@@ -60,8 +74,17 @@ class Vertex {
     
     var color: VertexColor = .White
     
-    init(elem: AnyObject) {
+    init(elem: VertexAware) {
         self.elem = elem
+        self.elem.vertex = self
+    }
+    
+    func rotateLeft() {
+        self.connections.rotateLeft()
+    }
+    
+    func rotateRight() {
+        self.connections.rotateRight()
     }
     
 }

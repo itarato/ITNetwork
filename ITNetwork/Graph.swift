@@ -17,11 +17,13 @@ class Graph {
     
     var matrix: [Vertex?]
     
-    let neighbourMap:[NeighbourPos] = [
-        (-1, 0, VertexConnectionDirecion.Up),
-        (0, 1, VertexConnectionDirecion.Right),
-        (1, 0, VertexConnectionDirecion.Down),
-        (0, -1, VertexConnectionDirecion.Left),
+    var serverPos: Point?
+    
+    let neighbourMap:[VertexConnectionDirecion] = [
+        VertexConnectionDirecion.Up,
+        VertexConnectionDirecion.Right,
+        VertexConnectionDirecion.Down,
+        VertexConnectionDirecion.Left,
     ]
     
     init(w: Int, h: Int) {
@@ -48,32 +50,32 @@ class Graph {
     func makeNetwork() {
         let randJ = RandomUtil.randIntRange(0, to: self.h)
         let randI = RandomUtil.randIntRange(0, to: self.w)
+        self.serverPos = Point(j: randJ, i: randI)
         let server: Vertex! = self.getJI(j: randJ, i: randI)
         server?.type = .Source
         server?.color = .Grey
         
-        let queue = Queue<NeighbourPos>()
-        // @Todo don't forget to make connections from the server and only use those ones
+        let queue = Queue<Point>()
         
         var serverConnections = [NeighbourPos]()
         for pos in self.neighbourMap {
-            serverConnections.append((randJ + pos.0, randI + pos.1, pos.2))
+            serverConnections.append((randJ + pos.neighbour().j, randI + pos.neighbour().i, pos))
         }
         let initialConnections = self.createConnections(from: server, to: serverConnections)
         for item in initialConnections {
             queue.add(item)
         }
 
-        while let (j, i, _) = queue.get() {
-            guard let v = self.getJI(j: j, i: i) else {
+        while let pos = queue.get() {
+            guard let v = self.getJI(j: pos.j, i: pos.i) else {
                 continue
             }
             
             v.color = .Grey
             
             // This is empty
-            // Decide if computer / empty (maybe not) / connection
-            let neighbours = self.getWhiteNeighbours(j: j, i: i)
+            // Decide if computer / connection
+            let neighbours = self.getWhiteNeighbours(j: pos.j, i: pos.i)
             if neighbours.count == 0 {
                 v.type = .Computer
             } else {
@@ -82,7 +84,6 @@ class Graph {
                     v.type = .Computer
                 } else {
                     let connected = self.createConnections(from: v, to: neighbours)
-                    // @todo try shuffling it
                     for connectedPos in connected {
                         queue.add(connectedPos)
                     }
@@ -96,22 +97,22 @@ class Graph {
     func getWhiteNeighbours(j j: Int, i: Int) -> [NeighbourPos] {
         var neighbours = [NeighbourPos]()
         for pos in self.neighbourMap {
-            if let neighbour = self.getJI(j: j + pos.0, i: i + pos.1) {
+            if let neighbour = self.getJI(j: j + pos.neighbour().j, i: i + pos.neighbour().i) {
                 if neighbour.color == .White {
-                    neighbours.append((j + pos.0, i + pos.1, pos.2))
+                    neighbours.append((j + pos.neighbour().j, i + pos.neighbour().i, pos))
                 }
             }
         }
         return neighbours
     }
     
-    func createConnections(from from: Vertex, to: [NeighbourPos]) -> [NeighbourPos] {
-        var connected = [NeighbourPos]()
+    func createConnections(from from: Vertex, to: [NeighbourPos]) -> [Point] {
+        var connected = [Point]()
         let fixed = RandomUtil.randIntRange(0, to: to.count)
         for var i = 0; i < to.count; i++ {
             if i == fixed || RandomUtil.randIntRange(0, to: 10) < 8 {
                 if makeConnection(from: from, to: to[i]) {
-                    connected.append(to[i])
+                    connected.append(Point(j: to[i].0, i: to[i].1))
                 }
             }
         }
@@ -134,4 +135,31 @@ class Graph {
         return true
     }
     
+//    func reviewFlow() {
+//        for v in self.matrix {
+//            v?.color = .White
+//            let tile = v!.elem as! TileViewController
+//            tile.turnOnAvailability(false)
+//        }
+//
+//        let queue = Queue<Point>()
+//        queue.add(self.serverPos!)
+//
+//        while let pos = queue.get() {
+//            guard let v = self.getJI(j: pos.j, i: pos.i) else {
+//                continue
+//            }
+//            
+//            v.color = .Grey
+//            
+////            if
+//            
+//            v.color = .Black
+//        }
+//    }
+//    
+//    func isConnected(v:Vertex, pos: Point, dir:VertexConnectionDirecion) -> Point? {
+//        
+//    }
+//    
 }
