@@ -51,16 +51,16 @@ class GameViewController : UIViewController, TileTapReceiver {
             if v?.type == .Computer {
                 tileViewCtrl.computer.hidden = false
             }
-            if v!.connections[VertexConnectionDirecion.Down.indexOf()] {
+            if v!.connections[VertexConnectionDirecion.Down.rawValue] {
                 tileViewCtrl.turnOnConnection(.Down)
             }
-            if v!.connections[VertexConnectionDirecion.Up.indexOf()] {
+            if v!.connections[VertexConnectionDirecion.Up.rawValue] {
                 tileViewCtrl.turnOnConnection(.Up)
             }
-            if v!.connections[VertexConnectionDirecion.Left.indexOf()] {
+            if v!.connections[VertexConnectionDirecion.Left.rawValue] {
                 tileViewCtrl.turnOnConnection(.Left)
             }
-            if v!.connections[VertexConnectionDirecion.Right.indexOf()] {
+            if v!.connections[VertexConnectionDirecion.Right.rawValue] {
                 tileViewCtrl.turnOnConnection(.Right)
             }
         }

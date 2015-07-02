@@ -124,8 +124,8 @@ class Graph {
             return false
         }
         
-        let fromConnectionIDX = to.2.indexOf()
-        let toConnectionIDX = to.2.opposite().indexOf()
+        let fromConnectionIDX = to.2.rawValue
+        let toConnectionIDX = to.2.opposite().rawValue
         
         from.connections[fromConnectionIDX] = true
         toVertex.connections[toConnectionIDX] = true

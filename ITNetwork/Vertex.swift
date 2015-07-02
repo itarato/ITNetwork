@@ -23,11 +23,8 @@ enum VertexColor {
     case Black
 }
 
-enum VertexConnectionDirecion {
-    case Up
-    case Right
-    case Down
-    case Left
+enum VertexConnectionDirecion: Int {
+    case Up = 0, Right, Down, Left
     
     func opposite() -> VertexConnectionDirecion {
         switch self {
@@ -35,15 +32,6 @@ enum VertexConnectionDirecion {
         case .Right: return .Left
         case .Down: return .Up
         case .Left: return .Right
-        }
-    }
-    
-    func indexOf() -> Int {
-        switch self {
-        case .Up: return 0
-        case .Right: return 1
-        case .Down: return 2
-        case .Left: return 3
         }
     }
     
