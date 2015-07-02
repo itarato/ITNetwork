@@ -43,24 +43,25 @@ class GameViewController : UIViewController, TileTapReceiver {
         
         self.graph.makeNetwork()
         
-        for v in self.graph.matrix {
-            let tileViewCtrl = v!.elem as! TileViewController
-            if v?.type == .Source {
-                tileViewCtrl.server.hidden = false
+        for elem in self.graph.vertices {
+            guard let v: Vertex = elem else {
+                continue
             }
-            if v?.type == .Computer {
-                tileViewCtrl.computer.hidden = false
-            }
-            if v!.connections[VertexConnectionDirecion.Down.rawValue] {
+            
+            let tileViewCtrl = v.elem as! TileViewController
+
+            tileViewCtrl.server.hidden = v.type != .Source
+            tileViewCtrl.computer.hidden = v.type != .Computer
+            if v.connections[VertexConnectionDirecion.Down.rawValue] {
                 tileViewCtrl.turnOnConnection(.Down)
             }
-            if v!.connections[VertexConnectionDirecion.Up.rawValue] {
+            if v.connections[VertexConnectionDirecion.Up.rawValue] {
                 tileViewCtrl.turnOnConnection(.Up)
             }
-            if v!.connections[VertexConnectionDirecion.Left.rawValue] {
+            if v.connections[VertexConnectionDirecion.Left.rawValue] {
                 tileViewCtrl.turnOnConnection(.Left)
             }
-            if v!.connections[VertexConnectionDirecion.Right.rawValue] {
+            if v.connections[VertexConnectionDirecion.Right.rawValue] {
                 tileViewCtrl.turnOnConnection(.Right)
             }
         }

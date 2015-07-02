@@ -15,7 +15,7 @@ class Graph {
     let w: Int
     let h: Int
     
-    var matrix: [Vertex?]
+    var vertices: [Vertex?]
     
     var serverPos: Point?
     
@@ -30,21 +30,21 @@ class Graph {
         self.w = w
         self.h = h
         
-        self.matrix = [Vertex?](count: h * w, repeatedValue: nil)
+        self.vertices = [Vertex?](count: h * w, repeatedValue: nil)
     }
     
     func getJI(j j: Int, i: Int) -> Vertex? {
         if j < 0 || i < 0 || j >= self.h || i >= self.w {
             return nil
         }
-        return self.matrix[j * w + i]
+        return self.vertices[j * w + i]
     }
 
     func setJI(j j: Int, i: Int, v: Vertex) {
         if j < 0 || i < 0 || j >= self.h || i >= self.w {
             return
         }
-        self.matrix[j * w + i] = v
+        self.vertices[j * w + i] = v
     }
     
     func makeNetwork() {
