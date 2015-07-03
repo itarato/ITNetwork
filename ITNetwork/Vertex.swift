@@ -47,7 +47,7 @@ enum VertexConnectionDirecion: Int {
 
 class Vertex {
 
-    let elem: VertexAware
+    let elem: ITNetworkNode
     
     var type: VertexType = .Empty
     
@@ -62,7 +62,7 @@ class Vertex {
     
     var color: VertexColor = .White
     
-    init(elem: VertexAware) {
+    init(elem: ITNetworkNode) {
         self.elem = elem
         self.elem.vertex = self
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TileViewController : UIViewController, VertexAware {
+class TileViewController : UIViewController, ITNetworkNode {
     
     @IBOutlet weak var server: UILabel!
     @IBOutlet weak var computer: UILabel!
@@ -40,7 +40,15 @@ class TileViewController : UIViewController, VertexAware {
         }
     }
     
-    func turnOnConnection(direction: VertexConnectionDirecion) {
+    func setComputer() {
+        self.computer.hidden = false
+    }
+    
+    func setServer() {
+        self.server.hidden = false
+    }
+    
+    func setConnection(direction: VertexConnectionDirecion) {
         let frame:CGRect!
         let halfSize:CGFloat = self.view.frame.width * 0.5
         let thickness:CGFloat = self.view.frame.width * 0.1
@@ -61,7 +69,7 @@ class TileViewController : UIViewController, VertexAware {
         self.connectionView.addSubview(connection)
     }
     
-    func turnOnAvailability(onOff: Bool) {
+    func setAvailability(onOff: Bool) {
         self.onOff.hidden = !onOff
     }
     
