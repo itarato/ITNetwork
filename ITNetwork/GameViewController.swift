@@ -8,11 +8,17 @@
 
 import UIKit
 
-class GameViewController : UIViewController, TileTapReceiver {
+class GameViewController : UIViewController {
     
     @IBOutlet weak var gridCanvas: UIView!
     
     var graph:Graph!
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("tapOccurred:"), name: ITNETWORK_EVENT_DID_TAP, object: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,8 +77,9 @@ class GameViewController : UIViewController, TileTapReceiver {
         return true
     }
     
-    func tapOccurredFrom(from: AnyObject) {
+    func tapOccurred(notification: NSNotification) {
         // Review the flow.
+        NSLog("tap event")
 //        self.graph.reviewFlow()
     }
     

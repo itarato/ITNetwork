@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8121.17" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8121.20" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.16"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TileViewController" customModule="ITNetwork" customModuleProvider="target">
@@ -41,7 +41,7 @@
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <gestureRecognizers/>
                     <connections>
-                        <outletCollection property="gestureRecognizers" destination="t6M-JR-HQm" appends="YES" id="Vfi-H4-d2y"/>
+                        <outletCollection property="gestureRecognizers" destination="PWc-9I-Ypw" appends="YES" id="yJI-JC-6jp"/>
                     </connections>
                 </view>
             </subviews>
@@ -59,9 +59,10 @@
                 <constraint firstItem="bST-80-Y0K" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="uTc-GG-62v"/>
             </constraints>
         </view>
-        <tapGestureRecognizer id="t6M-JR-HQm">
+        <tapGestureRecognizer id="PWc-9I-Ypw">
+            <pressTypeMask key="allowedPressTypes"/>
             <connections>
-                <action selector="onTap:" destination="-1" id="Uaj-jV-Was"/>
+                <action selector="onTap:" destination="-1" id="kGg-Dj-pbD"/>
             </connections>
         </tapGestureRecognizer>
     </objects>

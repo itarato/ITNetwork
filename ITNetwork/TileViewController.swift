@@ -16,8 +16,6 @@ class TileViewController : UIViewController, VertexAware {
     
     @IBOutlet weak var connectionView: UIView!
     
-    var delegate: TileTapReceiver?
-    
     var vertex: Vertex?
     
     init() {
@@ -35,7 +33,7 @@ class TileViewController : UIViewController, VertexAware {
     }
     
     @IBAction func onTap(sender: AnyObject) {
-        self.delegate?.tapOccurredFrom(self)
+        NSNotificationCenter.defaultCenter().postNotificationName(ITNETWORK_EVENT_DID_TAP, object: nil)
         self.vertex?.rotateRight()
         UIView.animateWithDuration(0.2) { () -> Void in
             self.connectionView.transform = CGAffineTransformRotate(self.connectionView.transform, CGFloat(M_PI / 2))

@@ -18,13 +18,13 @@
 		4772CCA61B41191E006E10B3 /* GameConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4772CCA51B41191E006E10B3 /* GameConfiguration.swift */; };
 		4772CCA81B411DC2006E10B3 /* TileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4772CCA71B411DC2006E10B3 /* TileViewController.swift */; };
 		4772CCAC1B411EF4006E10B3 /* TileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4772CCAB1B411EF4006E10B3 /* TileView.xib */; };
-		47A351E71B43BA35004F1D81 /* TileTapReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A351E61B43BA35004F1D81 /* TileTapReceiver.swift */; };
 		47A351E91B43BE0D004F1D81 /* VertexAware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A351E81B43BE0D004F1D81 /* VertexAware.swift */; };
 		47A351EC1B43C2B0004F1D81 /* ArrayExtra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A351EB1B43C2B0004F1D81 /* ArrayExtra.swift */; };
 		47E1D9031B41DA1800FBECDC /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E1D9021B41DA1800FBECDC /* Graph.swift */; };
 		47E1D9051B41DB0200FBECDC /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E1D9041B41DB0200FBECDC /* Vertex.swift */; };
 		47E1D9081B41E61300FBECDC /* RandomUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E1D9071B41E61300FBECDC /* RandomUtil.swift */; };
 		47E1D90A1B41E90400FBECDC /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E1D9091B41E90400FBECDC /* Queue.swift */; };
+		47F562711B47029D005EBC1A /* Defines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F562701B47029D005EBC1A /* Defines.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,13 +62,13 @@
 		4772CCA51B41191E006E10B3 /* GameConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameConfiguration.swift; sourceTree = "<group>"; };
 		4772CCA71B411DC2006E10B3 /* TileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileViewController.swift; sourceTree = "<group>"; };
 		4772CCAB1B411EF4006E10B3 /* TileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TileView.xib; sourceTree = "<group>"; };
-		47A351E61B43BA35004F1D81 /* TileTapReceiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileTapReceiver.swift; sourceTree = "<group>"; };
 		47A351E81B43BE0D004F1D81 /* VertexAware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VertexAware.swift; sourceTree = "<group>"; };
 		47A351EB1B43C2B0004F1D81 /* ArrayExtra.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtra.swift; sourceTree = "<group>"; };
 		47E1D9021B41DA1800FBECDC /* Graph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
 		47E1D9041B41DB0200FBECDC /* Vertex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
 		47E1D9071B41E61300FBECDC /* RandomUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomUtil.swift; sourceTree = "<group>"; };
 		47E1D9091B41E90400FBECDC /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		47F562701B47029D005EBC1A /* Defines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defines.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,8 +128,8 @@
 				4772CC811B411672006E10B3 /* Info.plist */,
 				47E1D9021B41DA1800FBECDC /* Graph.swift */,
 				47E1D9041B41DB0200FBECDC /* Vertex.swift */,
-				47A351E61B43BA35004F1D81 /* TileTapReceiver.swift */,
 				47A351E81B43BE0D004F1D81 /* VertexAware.swift */,
+				47F562701B47029D005EBC1A /* Defines.swift */,
 			);
 			path = ITNetwork;
 			sourceTree = "<group>";
@@ -323,8 +323,8 @@
 				47A351E91B43BE0D004F1D81 /* VertexAware.swift in Sources */,
 				4772CC761B411672006E10B3 /* AppDelegate.swift in Sources */,
 				47E1D9051B41DB0200FBECDC /* Vertex.swift in Sources */,
+				47F562711B47029D005EBC1A /* Defines.swift in Sources */,
 				47E1D90A1B41E90400FBECDC /* Queue.swift in Sources */,
-				47A351E71B43BA35004F1D81 /* TileTapReceiver.swift in Sources */,
 				4772CCA81B411DC2006E10B3 /* TileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -469,6 +469,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ITNetwork/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.itarato.ITNetwork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -481,6 +482,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ITNetwork/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.itarato.ITNetwork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
