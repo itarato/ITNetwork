@@ -58,17 +58,10 @@ class GameViewController : UIViewController {
 
             tileViewCtrl.server.hidden = v.type != .Source
             tileViewCtrl.computer.hidden = v.type != .Computer
-            if v.connections[VertexConnectionDirecion.Down.rawValue] {
-                tileViewCtrl.setConnection(.Down)
-            }
-            if v.connections[VertexConnectionDirecion.Up.rawValue] {
-                tileViewCtrl.setConnection(.Up)
-            }
-            if v.connections[VertexConnectionDirecion.Left.rawValue] {
-                tileViewCtrl.setConnection(.Left)
-            }
-            if v.connections[VertexConnectionDirecion.Right.rawValue] {
-                tileViewCtrl.setConnection(.Right)
+            for dir in VertexConnectionDirecion.all() {
+                if v.connections[dir.rawValue] {
+                    tileViewCtrl.setConnection(dir)
+                }
             }
         }
     }

@@ -43,6 +43,10 @@ enum VertexConnectionDirecion: Int {
         case .Left: return Point(j: 0, i: -1)
         }
     }
+    
+    static func all() -> [VertexConnectionDirecion] {
+        return [.Up, .Right, .Down, .Left]
+    }
 }
 
 class Vertex {
