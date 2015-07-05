@@ -43,10 +43,12 @@ class GameViewController : UIViewController {
         let playFrameSize = self.gridCanvas.frame.size
         var tileSize = min(playFrameSize.height / CGFloat(height), playFrameSize.width / CGFloat(width))
         tileSize = tileSize - (tileSize % 2)
+        let paddingLeft = (playFrameSize.width - tileSize * CGFloat(width)) * 0.5
+        let paddingTop = (playFrameSize.height - tileSize * CGFloat(height)) * 0.5
         
         for var j = 0; j < height; j++ {
             for var i = 0; i < width; i++ {
-                let tileFrame = CGRect(x: tileSize * CGFloat(i), y: tileSize * CGFloat(j), width: tileSize, height: tileSize)
+                let tileFrame = CGRect(x: paddingLeft + tileSize * CGFloat(i), y: paddingTop + tileSize * CGFloat(j), width: tileSize, height: tileSize)
                 let tile = TileViewController(nibName: "TileView", bundle: nil)
                 tile.view.frame = tileFrame
                 self.gridCanvas.addSubview(tile.view)

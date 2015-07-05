@@ -37,10 +37,9 @@ class Graph {
     }
     
     func getJI(p: Point) -> Vertex? {
-        if p.j < 0 || p.i < 0 || p.j >= self.h || p.i >= self.w {
-            return nil
-        }
-        return self.vertices[p.j * w + p.i]
+        let j = (p.j + self.h) % self.h
+        let i = (p.i + self.w) % self.w
+        return self.vertices[j * w + i]
     }
 
     func setJI(p: Point, v: Vertex) {
