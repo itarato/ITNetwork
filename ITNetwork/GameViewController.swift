@@ -11,6 +11,10 @@ import UIKit
 class GameViewController : UIViewController {
     
     @IBOutlet weak var gridCanvas: UIView!
+    @IBOutlet weak var configRows: UILabel!
+    @IBOutlet weak var configCols: UILabel!
+    @IBOutlet weak var plusMinusRows: UIStepper!
+    @IBOutlet weak var plusMinusCols: UIStepper!
     
     var graph:Graph!
     
@@ -21,6 +25,14 @@ class GameViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.plusMinusCols.value = Double(GameConfiguration.globalConfiguration().width)
+        self.plusMinusRows.value = Double(GameConfiguration.globalConfiguration().height)
+        self.refreshConfigDisplay()
+    }
+    
+    private func refreshConfigDisplay() {
+        self.configRows.text = String(format: "%0.0f", self.plusMinusRows.value)
+        self.configCols.text = String(format: "%0.0f", self.plusMinusCols.value)
     }
     
     private func initializeGrid() {
@@ -29,13 +41,13 @@ class GameViewController : UIViewController {
         self.graph = Graph(w: width, h: height)
         
         let playFrameSize = self.gridCanvas.frame.size
-        let tileSize = min(playFrameSize.height / CGFloat(height), playFrameSize.width / CGFloat(width))
+        var tileSize = min(playFrameSize.height / CGFloat(height), playFrameSize.width / CGFloat(width))
+        tileSize = tileSize - (tileSize % 2)
         
         for var j = 0; j < height; j++ {
             for var i = 0; i < width; i++ {
                 let tileFrame = CGRect(x: tileSize * CGFloat(i), y: tileSize * CGFloat(j), width: tileSize, height: tileSize)
                 let tile = TileViewController(nibName: "TileView", bundle: nil)
-                NSLog("Tile created")
                 tile.view.frame = tileFrame
                 self.gridCanvas.addSubview(tile.view)
                 
@@ -83,6 +95,16 @@ class GameViewController : UIViewController {
             subview.removeFromSuperview()
         }
         self.initializeGrid()
+    }
+    
+    @IBAction func ohHitConfigRows() {
+        GameConfiguration.globalConfiguration().height = Int(self.plusMinusRows.value)
+        self.refreshConfigDisplay()
+    }
+    
+    @IBAction func onHitConfigCols() {
+        GameConfiguration.globalConfiguration().width = Int(self.plusMinusCols.value)
+        self.refreshConfigDisplay()
     }
     
 }

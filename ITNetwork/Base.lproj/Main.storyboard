@@ -30,9 +30,15 @@
                             </label>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="w6h-2K-7oz">
                                 <rect key="frame" x="20" y="563" width="94" height="29"/>
+                                <connections>
+                                    <action selector="ohHitConfigRows" destination="dPB-PW-wTE" eventType="valueChanged" id="asq-SN-9B6"/>
+                                </connections>
                             </stepper>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="c5q-qu-TVV">
                                 <rect key="frame" x="174" y="563" width="94" height="29"/>
+                                <connections>
+                                    <action selector="onHitConfigCols" destination="dPB-PW-wTE" eventType="valueChanged" id="RIE-aE-IdO"/>
+                                </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5A-KP-hWB">
                                 <rect key="frame" x="155" y="567" width="11" height="21"/>
@@ -76,7 +82,11 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="configCols" destination="H5A-KP-hWB" id="cC4-g0-jvD"/>
+                        <outlet property="configRows" destination="Gwq-wT-so9" id="VWw-cW-gEq"/>
                         <outlet property="gridCanvas" destination="7Qv-KX-EzU" id="TkW-Ow-i3Z"/>
+                        <outlet property="plusMinusCols" destination="c5q-qu-TVV" id="1ga-Bt-psh"/>
+                        <outlet property="plusMinusRows" destination="w6h-2K-7oz" id="0mO-BD-dpF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fj0-FU-u5z" userLabel="First Responder" sceneMemberID="firstResponder"/>

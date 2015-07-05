@@ -34,7 +34,6 @@ class Graph {
     deinit {
         self.vertices = []
         self.serverPos = nil
-        NSLog("Graph deinit")
     }
     
     func getJI(p: Point) -> Vertex? {
