@@ -11,12 +11,16 @@ struct Point {
     var i: Int = 0
 }
 
+func +(left: Point, right: Point) -> Point {
+    return Point(j: left.j + right.j, i: left.i + right.i)
+}
+
 struct NeighbourPoint {
     var p: Point
     var dir: VertexConnectionDirecion
     
-    init(j: Int, i: Int, dir: VertexConnectionDirecion) {
-        self.p = Point(j: j, i: i)
+    init(p: Point, dir: VertexConnectionDirecion) {
+        self.p = p
         self.dir = dir
     }
 }

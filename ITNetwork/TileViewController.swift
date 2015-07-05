@@ -10,9 +10,10 @@ import UIKit
 
 class TileViewController : UIViewController, ITNetworkNode {
     
-    @IBOutlet weak var server: UILabel!
-    @IBOutlet weak var computer: UILabel!
-    @IBOutlet weak var onOff: UILabel!
+    @IBOutlet weak var server: UIView!
+    @IBOutlet weak var serverLight: UIView!
+    @IBOutlet weak var computer: UIView!
+    @IBOutlet weak var onOff: UIView!
     
     @IBOutlet weak var connectionView: UIView!
     
@@ -39,26 +40,28 @@ class TileViewController : UIViewController, ITNetworkNode {
     
     func setComputer() {
         self.computer.hidden = false
+        self.onOff.hidden = false
     }
     
     func setServer() {
         self.server.hidden = false
+        self.serverLight.hidden = false
     }
     
     func setConnection(direction: VertexConnectionDirecion) {
         let frame:CGRect!
-        let halfSize:CGFloat = self.view.frame.width * 0.5
         let thickness:CGFloat = self.view.frame.width * 0.1
         let thickness_half:CGFloat = self.view.frame.width * 0.05
+        let halfSize:CGFloat = self.view.frame.width * 0.5 + thickness_half
         switch direction{
         case .Up:
-            frame = CGRect(x: halfSize - thickness_half, y: 0, width: thickness, height: halfSize)
+            frame = CGRect(x: halfSize - thickness, y: 0, width: thickness, height: halfSize)
         case .Down:
-            frame = CGRect(x: halfSize - thickness_half, y: halfSize, width: thickness, height: halfSize)
+            frame = CGRect(x: halfSize - thickness, y: halfSize - thickness_half, width: thickness, height: halfSize)
         case .Left:
-            frame = CGRect(x: 0, y: halfSize - thickness_half, width: halfSize, height: thickness)
+            frame = CGRect(x: 0, y: halfSize - thickness, width: halfSize, height: thickness)
         case .Right:
-            frame = CGRect(x: halfSize, y: halfSize - thickness_half, width: halfSize, height: thickness)
+            frame = CGRect(x: halfSize - thickness, y: halfSize - thickness, width: halfSize, height: thickness)
         }
         
         let connection = UIView(frame: frame)

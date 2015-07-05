@@ -31,25 +31,23 @@ class Graph {
         self.vertices = [Vertex?](count: h * w, repeatedValue: nil)
     }
     
-    func getJI(j j: Int, i: Int) -> Vertex? {
-        if j < 0 || i < 0 || j >= self.h || i >= self.w {
+    func getJI(p: Point) -> Vertex? {
+        if p.j < 0 || p.i < 0 || p.j >= self.h || p.i >= self.w {
             return nil
         }
-        return self.vertices[j * w + i]
+        return self.vertices[p.j * w + p.i]
     }
 
-    func setJI(j j: Int, i: Int, v: Vertex) {
-        if j < 0 || i < 0 || j >= self.h || i >= self.w {
+    func setJI(p: Point, v: Vertex) {
+        if p.j < 0 || p.i < 0 || p.j >= self.h || p.i >= self.w {
             return
         }
-        self.vertices[j * w + i] = v
+        self.vertices[p.j * w + p.i] = v
     }
     
     func makeNetwork() {
-        let randJ = RandomUtil.randIntRange(0, to: self.h)
-        let randI = RandomUtil.randIntRange(0, to: self.w)
-        self.serverPos = Point(j: randJ, i: randI)
-        let server: Vertex! = self.getJI(j: randJ, i: randI)
+        self.serverPos = Point(j: RandomUtil.randIntRange(0, to: self.h), i: RandomUtil.randIntRange(0, to: self.w))
+        let server: Vertex! = self.getJI(self.serverPos!)
         server?.type = .Source
         server?.color = .Grey
         
@@ -57,7 +55,7 @@ class Graph {
         
         var serverConnections = [NeighbourPoint]()
         for pos in self.neighbourMap {
-            serverConnections.append(NeighbourPoint(j: randJ + pos.neighbour().j, i: randI + pos.neighbour().i, dir: pos))
+            serverConnections.append(NeighbourPoint(p: self.serverPos! + pos.neighbour(), dir: pos))
         }
         let initialConnections = self.createRandomConnections(from: server, to: serverConnections)
         for item in initialConnections {
@@ -65,7 +63,7 @@ class Graph {
         }
 
         while let p = queue.get() {
-            guard let v = self.getJI(j: p.j, i: p.i) else {
+            guard let v = self.getJI(p) else {
                 continue
             }
             
@@ -95,9 +93,9 @@ class Graph {
     func getWhiteNeighbours(p: Point) -> [NeighbourPoint] {
         var neighbours = [NeighbourPoint]()
         for pos in self.neighbourMap {
-            if let neighbour = self.getJI(j: p.j + pos.neighbour().j, i: p.i + pos.neighbour().i) {
+            if let neighbour = self.getJI(p + pos.neighbour()) {
                 if neighbour.color == .White {
-                    neighbours.append(NeighbourPoint(j: p.j + pos.neighbour().j, i: p.i + pos.neighbour().i, dir: pos))
+                    neighbours.append(NeighbourPoint(p: p + pos.neighbour(), dir: pos))
                 }
             }
         }
@@ -118,7 +116,7 @@ class Graph {
     }
     
     func makeConnection(from from: Vertex, to: NeighbourPoint) -> Bool {
-        guard let toVertex = self.getJI(j: to.p.j, i: to.p.i) else {
+        guard let toVertex = self.getJI(to.p) else {
             return false
         }
         

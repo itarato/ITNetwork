@@ -43,7 +43,7 @@ class GameViewController : UIViewController {
                 tile.view.frame = tileFrame
                 self.gridCanvas.addSubview(tile.view)
                 
-                self.graph.setJI(j: j, i: i, v: Vertex(elem: tile))
+                self.graph.setJI(Point(j: j, i: i), v: Vertex(elem: tile))
             }
         }
         
@@ -56,8 +56,12 @@ class GameViewController : UIViewController {
             
             let tileViewCtrl = v.elem as! TileViewController
 
-            tileViewCtrl.server.hidden = v.type != .Source
-            tileViewCtrl.computer.hidden = v.type != .Computer
+            if v.type == .Source {
+                tileViewCtrl.setServer()
+            }
+            if v.type == .Computer {
+                tileViewCtrl.setComputer()
+            }
             for dir in VertexConnectionDirecion.all() {
                 if v.connections[dir.rawValue] {
                     tileViewCtrl.setConnection(dir)
