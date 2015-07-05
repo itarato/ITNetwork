@@ -14,6 +14,7 @@ struct Point {
 struct NeighbourPoint {
     var p: Point
     var dir: VertexConnectionDirecion
+    
     init(j: Int, i: Int, dir: VertexConnectionDirecion) {
         self.p = Point(j: j, i: i)
         self.dir = dir

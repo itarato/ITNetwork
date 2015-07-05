@@ -8,8 +8,6 @@
 
 import Foundation
 
-typealias NeighbourPos = (Int, Int, VertexConnectionDirecion)
-
 class Graph {
     
     let w: Int
@@ -57,17 +55,17 @@ class Graph {
         
         let queue = Queue<Point>()
         
-        var serverConnections = [NeighbourPos]()
+        var serverConnections = [NeighbourPoint]()
         for pos in self.neighbourMap {
-            serverConnections.append((randJ + pos.neighbour().j, randI + pos.neighbour().i, pos))
+            serverConnections.append(NeighbourPoint(j: randJ + pos.neighbour().j, i: randI + pos.neighbour().i, dir: pos))
         }
         let initialConnections = self.createRandomConnections(from: server, to: serverConnections)
         for item in initialConnections {
             queue.add(item)
         }
 
-        while let pos = queue.get() {
-            guard let v = self.getJI(j: pos.j, i: pos.i) else {
+        while let p = queue.get() {
+            guard let v = self.getJI(j: p.j, i: p.i) else {
                 continue
             }
             
@@ -75,7 +73,7 @@ class Graph {
             
             // This is empty
             // Decide if computer / connection
-            let neighbours = self.getWhiteNeighbours(j: pos.j, i: pos.i)
+            let neighbours = self.getWhiteNeighbours(p)
             if neighbours.count == 0 {
                 v.type = .Computer
             } else {
@@ -94,38 +92,38 @@ class Graph {
         }
     }
     
-    func getWhiteNeighbours(j j: Int, i: Int) -> [NeighbourPos] {
-        var neighbours = [NeighbourPos]()
+    func getWhiteNeighbours(p: Point) -> [NeighbourPoint] {
+        var neighbours = [NeighbourPoint]()
         for pos in self.neighbourMap {
-            if let neighbour = self.getJI(j: j + pos.neighbour().j, i: i + pos.neighbour().i) {
+            if let neighbour = self.getJI(j: p.j + pos.neighbour().j, i: p.i + pos.neighbour().i) {
                 if neighbour.color == .White {
-                    neighbours.append((j + pos.neighbour().j, i + pos.neighbour().i, pos))
+                    neighbours.append(NeighbourPoint(j: p.j + pos.neighbour().j, i: p.i + pos.neighbour().i, dir: pos))
                 }
             }
         }
         return neighbours
     }
     
-    func createRandomConnections(from from: Vertex, to: [NeighbourPos]) -> [Point] {
+    func createRandomConnections(from from: Vertex, to: [NeighbourPoint]) -> [Point] {
         var connected = [Point]()
         let fixed = RandomUtil.randIntRange(0, to: to.count)
         for var i = 0; i < to.count; i++ {
             if i == fixed || RandomUtil.randIntRange(0, to: 10) < 8 {
                 if makeConnection(from: from, to: to[i]) {
-                    connected.append(Point(j: to[i].0, i: to[i].1))
+                    connected.append(to[i].p)
                 }
             }
         }
         return connected
     }
     
-    func makeConnection(from from: Vertex, to: NeighbourPos) -> Bool {
-        guard let toVertex = self.getJI(j: to.0, i: to.1) else {
+    func makeConnection(from from: Vertex, to: NeighbourPoint) -> Bool {
+        guard let toVertex = self.getJI(j: to.p.j, i: to.p.i) else {
             return false
         }
         
-        let fromConnectionIDX = to.2.rawValue
-        let toConnectionIDX = to.2.opposite().rawValue
+        let fromConnectionIDX = to.dir.rawValue
+        let toConnectionIDX = to.dir.opposite().rawValue
         
         from.connections[fromConnectionIDX] = true
         toVertex.connections[toConnectionIDX] = true
