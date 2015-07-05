@@ -178,13 +178,11 @@ class Graph {
     
     func randomize() {
         for v in self.vertices {
-            let rand = RandomUtil.randIntRange(0, to: 4)
             let tile = v!.elem as ITNetworkNode
-            // @todo make functional
-            for var i = 0; i <= rand; i++ {
+            RandomUtil.randIntRange(0, to: 4).times({ () -> Void in
                 tile.rotate()
                 v?.rotateRight()
-            }
+            })
         }
     }
     

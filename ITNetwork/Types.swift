@@ -62,3 +62,13 @@ enum VertexConnectionDirecion: Int {
         return [.Up, .Right, .Down, .Left]
     }
 }
+
+extension Int {
+    
+    func times(callback: () -> Void) {
+        for var i = 0; i < self; i++ {
+            callback()
+        }
+    }
+    
+}
