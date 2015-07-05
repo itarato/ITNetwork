@@ -16,7 +16,7 @@ class TileViewController : UIViewController, ITNetworkNode {
     @IBOutlet weak var onOff: UIView!
     @IBOutlet weak var connectionView: UIView!
     
-    var vertex: Vertex?
+    weak var vertex: Vertex?
     
     deinit {
         self.server = nil
@@ -24,6 +24,9 @@ class TileViewController : UIViewController, ITNetworkNode {
         self.computer = nil
         self.onOff = nil
         self.vertex = nil
+        for subview in self.connectionView.subviews {
+            subview.removeFromSuperview()
+        }
     }
     
     @IBAction func onTap(sender: AnyObject) {

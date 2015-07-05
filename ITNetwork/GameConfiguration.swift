@@ -20,7 +20,7 @@ class GameConfiguration {
         return GameConfiguration.globalConfig
     }
     
-    init(width: Int = 2, height: Int = 2) {
+    init(width: Int = 5, height: Int = 7) {
         self.width = width
         self.height = height
     }
