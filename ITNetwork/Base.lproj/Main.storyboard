@@ -26,7 +26,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="X91-MR-YLg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="BdY-ig-gzG"/>
                             <constraint firstItem="X91-MR-YLg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kxy-Li-9Y1"/>
@@ -61,10 +61,10 @@
                             </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Qv-KX-EzU">
                                 <rect key="frame" x="20" y="49" width="560" height="493"/>
-                                <color key="backgroundColor" red="0.45259451740000001" green="0.6510275136" blue="0.36531867010000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="7Qv-KX-EzU" secondAttribute="leading" id="3d7-Hs-m5G"/>
                             <constraint firstItem="ayd-4k-nPm" firstAttribute="top" secondItem="OqA-5h-hM9" secondAttribute="bottom" constant="20" id="5xX-bK-7bD"/>

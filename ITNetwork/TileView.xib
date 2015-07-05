@@ -30,7 +30,7 @@
                 </view>
                 <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hoR-vv-YTv">
                     <rect key="frame" x="286" y="286" width="28" height="28"/>
-                    <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28" id="lLR-ld-ezd"/>
                         <constraint firstAttribute="width" constant="28" id="t2t-jo-EC5"/>
@@ -55,7 +55,7 @@
                     <rect key="frame" x="284" y="284" width="32" height="32"/>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="hoR-vv-YTv" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="1o6-GE-BiG"/>
                 <constraint firstItem="oNY-AC-cjn" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-2" id="4Xf-tH-fza"/>
