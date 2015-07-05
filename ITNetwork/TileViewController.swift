@@ -31,11 +31,16 @@ class TileViewController : UIViewController, ITNetworkNode {
     }
     
     @IBAction func onTap(sender: AnyObject) {
-        NSNotificationCenter.defaultCenter().postNotificationName(ITNETWORK_EVENT_DID_TAP, object: nil)
         self.vertex?.rotateRight()
-        UIView.animateWithDuration(0.2) { () -> Void in
-            self.connectionView.transform = CGAffineTransformRotate(self.connectionView.transform, CGFloat(M_PI / 2))
+        UIView.animateWithDuration(0.2, animations: { () -> Void in
+            self.rotate()
+        }) { (Bool) -> Void in
+            NSNotificationCenter.defaultCenter().postNotificationName(ITNETWORK_EVENT_DID_TAP, object: nil)
         }
+    }
+    
+    func rotate() {
+        self.connectionView.transform = CGAffineTransformRotate(self.connectionView.transform, CGFloat(M_PI / 2))
     }
     
     func setComputer() {
@@ -70,7 +75,7 @@ class TileViewController : UIViewController, ITNetworkNode {
     }
     
     func setAvailability(onOff: Bool) {
-        self.onOff.hidden = !onOff
+        self.onOff.backgroundColor = onOff ? UIColor.greenColor() : UIColor.darkGrayColor()
     }
     
 }

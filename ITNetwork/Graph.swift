@@ -131,31 +131,56 @@ class Graph {
         return true
     }
     
-//    func reviewFlow() {
-//        for v in self.matrix {
-//            v?.color = .White
-//            let tile = v!.elem as! TileViewController
-//            tile.turnOnAvailability(false)
-//        }
-//
-//        let queue = Queue<Point>()
-//        queue.add(self.serverPos!)
-//
-//        while let pos = queue.get() {
-//            guard let v = self.getJI(j: pos.j, i: pos.i) else {
-//                continue
-//            }
-//            
-//            v.color = .Grey
-//            
-////            if
-//            
-//            v.color = .Black
-//        }
-//    }
-//    
-//    func isConnected(v:Vertex, pos: Point, dir:VertexConnectionDirecion) -> Point? {
-//        
-//    }
-//    
+    func reviewFlow() {
+        for v in self.vertices {
+            v?.color = .White
+            let tile = v!.elem as! TileViewController
+            tile.setAvailability(false)
+        }
+
+        let queue = Queue<Point>()
+        queue.add(self.serverPos!)
+
+        while let p = queue.get() {
+            guard let v = self.getJI(p) else {
+                continue
+            }
+            
+            v.color = .Grey
+          
+            for dir in self.neighbourMap {
+                if let neighbourP = self.isConnectedAndWhite(v, pos: p, dir: dir) {
+                    queue.add(neighbourP)
+                }
+            }
+            
+            v.color = .Black
+            
+            let tile = v.elem as ITNetworkNode
+            tile.setAvailability(true)
+        }
+    }
+    
+    func isConnectedAndWhite(v:Vertex, pos: Point, dir:VertexConnectionDirecion) -> Point? {
+        guard let neighbour = self.getJI(pos + dir.neighbour()) else {
+            return nil
+        }
+        if v.connections[dir.rawValue] && neighbour.connections[dir.opposite().rawValue] && neighbour.color == .White {
+            return pos + dir.neighbour()
+        }
+        return nil
+    }
+    
+    func randomize() {
+        for v in self.vertices {
+            let rand = RandomUtil.randIntRange(0, to: 4)
+            let tile = v!.elem as ITNetworkNode
+            // @todo make functional
+            for var i = 0; i <= rand; i++ {
+                tile.rotate()
+                v?.rotateRight()
+            }
+        }
+    }
+    
 }

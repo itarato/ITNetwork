@@ -68,6 +68,10 @@ class GameViewController : UIViewController {
                 }
             }
         }
+        
+        self.graph.randomize()
+        
+        self.graph.reviewFlow()
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -75,8 +79,7 @@ class GameViewController : UIViewController {
     }
     
     func tapOccurred(notification: NSNotification) {
-        // Review the flow.
-//        self.graph.reviewFlow()
+        self.graph.reviewFlow()
     }
     
 }

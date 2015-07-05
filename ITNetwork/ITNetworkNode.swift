@@ -14,8 +14,10 @@ protocol ITNetworkNode {
     
     func setServer()
     
+    func setAvailability(onOff: Bool)
+    
     func setConnection(direction: VertexConnectionDirecion)
     
-    func setAvailability(onOff: Bool)
+    func rotate()
     
 }
