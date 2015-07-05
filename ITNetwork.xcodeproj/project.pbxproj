@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		471253FE1B4932640097436D /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471253FD1B4932640097436D /* Types.swift */; };
 		4772CC761B411672006E10B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4772CC751B411672006E10B3 /* AppDelegate.swift */; };
 		4772CC781B411672006E10B3 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4772CC771B411672006E10B3 /* IntroViewController.swift */; };
 		4772CC7B1B411672006E10B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4772CC791B411672006E10B3 /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		471253FD1B4932640097436D /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		4772CC721B411672006E10B3 /* ITNetwork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITNetwork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4772CC751B411672006E10B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4772CC771B411672006E10B3 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				47E1D9041B41DB0200FBECDC /* Vertex.swift */,
 				47A351E81B43BE0D004F1D81 /* ITNetworkNode.swift */,
 				47F562701B47029D005EBC1A /* Defines.swift */,
+				471253FD1B4932640097436D /* Types.swift */,
 			);
 			path = ITNetwork;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				4772CCA41B411869006E10B3 /* GameViewController.swift in Sources */,
 				47A351E91B43BE0D004F1D81 /* ITNetworkNode.swift in Sources */,
 				4772CC761B411672006E10B3 /* AppDelegate.swift in Sources */,
+				471253FE1B4932640097436D /* Types.swift in Sources */,
 				47E1D9051B41DB0200FBECDC /* Vertex.swift in Sources */,
 				47F562711B47029D005EBC1A /* Defines.swift in Sources */,
 				47E1D90A1B41E90400FBECDC /* Queue.swift in Sources */,

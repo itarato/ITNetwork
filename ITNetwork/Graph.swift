@@ -61,7 +61,7 @@ class Graph {
         for pos in self.neighbourMap {
             serverConnections.append((randJ + pos.neighbour().j, randI + pos.neighbour().i, pos))
         }
-        let initialConnections = self.createConnections(from: server, to: serverConnections)
+        let initialConnections = self.createRandomConnections(from: server, to: serverConnections)
         for item in initialConnections {
             queue.add(item)
         }
@@ -83,7 +83,7 @@ class Graph {
                 if randChoice < 3 {
                     v.type = .Computer
                 } else {
-                    let connected = self.createConnections(from: v, to: neighbours)
+                    let connected = self.createRandomConnections(from: v, to: neighbours)
                     for connectedPos in connected {
                         queue.add(connectedPos)
                     }
@@ -106,7 +106,7 @@ class Graph {
         return neighbours
     }
     
-    func createConnections(from from: Vertex, to: [NeighbourPos]) -> [Point] {
+    func createRandomConnections(from from: Vertex, to: [NeighbourPos]) -> [Point] {
         var connected = [Point]()
         let fixed = RandomUtil.randIntRange(0, to: to.count)
         for var i = 0; i < to.count; i++ {
