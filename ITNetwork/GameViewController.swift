@@ -72,7 +72,6 @@ class GameViewController : UIViewController {
     
     func tapOccurred(notification: NSNotification) {
         // Review the flow.
-        NSLog("tap event")
 //        self.graph.reviewFlow()
     }
     

@@ -27,9 +27,6 @@ class TileViewController : UIViewController, ITNetworkNode {
     }
     
     override func viewDidLoad() {
-        self.computer.hidden = true
-        self.server.hidden = true
-        self.onOff.hidden = true
     }
     
     @IBAction func onTap(sender: AnyObject) {
