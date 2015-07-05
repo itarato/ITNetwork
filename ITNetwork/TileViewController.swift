@@ -14,20 +14,16 @@ class TileViewController : UIViewController, ITNetworkNode {
     @IBOutlet weak var serverLight: UIView!
     @IBOutlet weak var computer: UIView!
     @IBOutlet weak var onOff: UIView!
-    
     @IBOutlet weak var connectionView: UIView!
     
     var vertex: Vertex?
     
-    init() {
-        super.init(nibName: "TileView", bundle: nil)
-    }
-    
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewDidLoad() {
+    deinit {
+        self.server = nil
+        self.serverLight = nil
+        self.computer = nil
+        self.onOff = nil
+        self.vertex = nil
     }
     
     @IBAction func onTap(sender: AnyObject) {

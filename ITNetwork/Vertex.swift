@@ -28,6 +28,10 @@ class Vertex {
         self.elem.vertex = self
     }
     
+    deinit {
+        self.parent = nil
+    }
+    
     func rotateLeft() {
         self.connections.rotateLeft()
     }

@@ -16,16 +16,11 @@ class GameViewController : UIViewController {
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("tapOccurred:"), name: ITNETWORK_EVENT_DID_TAP, object: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        self.initializeGrid()
     }
     
     private func initializeGrid() {
@@ -39,7 +34,8 @@ class GameViewController : UIViewController {
         for var j = 0; j < height; j++ {
             for var i = 0; i < width; i++ {
                 let tileFrame = CGRect(x: tileSize * CGFloat(i), y: tileSize * CGFloat(j), width: tileSize, height: tileSize)
-                let tile = TileViewController()
+                let tile = TileViewController(nibName: "TileView", bundle: nil)
+                NSLog("Tile created")
                 tile.view.frame = tileFrame
                 self.gridCanvas.addSubview(tile.view)
                 
@@ -80,6 +76,13 @@ class GameViewController : UIViewController {
     
     func tapOccurred(notification: NSNotification) {
         self.graph.reviewFlow()
+    }
+    
+    @IBAction func onHitGo() {
+        for subview in self.gridCanvas.subviews {
+            subview.removeFromSuperview()
+        }
+        self.initializeGrid()
     }
     
 }

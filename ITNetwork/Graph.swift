@@ -31,6 +31,12 @@ class Graph {
         self.vertices = [Vertex?](count: h * w, repeatedValue: nil)
     }
     
+    deinit {
+        self.vertices = []
+        self.serverPos = nil
+        NSLog("Graph deinit")
+    }
+    
     func getJI(p: Point) -> Vertex? {
         if p.j < 0 || p.i < 0 || p.j >= self.h || p.i >= self.w {
             return nil
